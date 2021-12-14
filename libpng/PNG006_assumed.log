@@ -1,0 +1,10 @@
+=================================================================
+==254929==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 7938249 byte(s) in 1 object(s) allocated from:
+    #0 0x50a57f in malloc /home/r3x/magma-test/llvm10/compiler-rt/lib/asan/asan_malloc_linux.cpp:145:3
+    #1 0x542352 in limited_malloc(png_struct_def*, unsigned long) (/home/r3x/Downloads/magma_test/libpng_asan+0x542352)
+    #2 0x54e7d8 in MAGMA_png_malloc_base /home/r3x/magma-test/magma/targets/libpng/repo/pngmem.c:91:17
+    #3 0x54e7d8 in MAGMA_png_malloc_warn /home/r3x/magma-test/magma/targets/libpng/repo/pngmem.c:217:23
+
+SUMMARY: AddressSanitizer: 7938249 byte(s) leaked in 1 allocation(s).

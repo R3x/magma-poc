@@ -1,0 +1,15 @@
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==254865==ERROR: AddressSanitizer: FPE on unknown address 0x000000559dad (pc 0x000000559dad bp 0x000074524e53 sp 0x7ffc8eef3740 T0)
+    #0 0x559dad in MAGMA_png_check_chunk_length /home/r3x/magma-test/magma/targets/libpng/repo/pngrutil.c:3199:38
+    #1 0x559dad in MAGMA_png_read_chunk_header /home/r3x/magma-test/magma/targets/libpng/repo/pngrutil.c:185:4
+    #2 0x54e92e in MAGMA_png_read_info /home/r3x/magma-test/magma/targets/libpng/repo/pngread.c:108:28
+    #3 0x543cb2 in LLVMFuzzerTestOneInput (/home/r3x/Downloads/magma_test/libpng_asan+0x543cb2)
+    #4 0x442dc1 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:556:17
+    #5 0x426bd4 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:293:21
+    #6 0x431426 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:779:19
+    #7 0x41ead6 in main /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerMain.cpp:19:30
+    #8 0x7fce814f70b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #9 0x41eb2d in _start (/home/r3x/Downloads/magma_test/libpng_asan+0x41eb2d)
+
+AddressSanitizer can not provide additional info.

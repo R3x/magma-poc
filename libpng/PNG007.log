@@ -1,0 +1,16 @@
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==249704==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x00000000009b (pc 0x000000488567 bp 0x000000000000 sp 0x7ffcaa0d1680 T249704)
+==249704==The signal is caused by a READ memory access.
+==249704==Hint: address points to the zero page.
+    #0 0x488567 in png_do_expand_palette /home/r3x/magma-test/magma/targets/libpng/repo/pngrtran.c:4367:40
+    #1 0x488567 in MAGMA_png_do_read_transformations /home/r3x/magma-test/magma/targets/libpng/repo/pngrtran.c:4791:10
+    #2 0x481657 in MAGMA_png_read_row /home/r3x/magma-test/magma/targets/libpng/repo/pngread.c:572:7
+    #3 0x478845 in LLVMFuzzerTestOneInput (/home/r3x/Downloads/magma_test/libpng_oss_fuzz_binary+0x478845)
+    #4 0x42c041 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:556:17
+    #5 0x40fe54 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:293:21
+    #6 0x41a6a6 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:779:19
+    #7 0x407d56 in main /home/r3x/magma-test/llvm10/compiler-rt/lib/fuzzer/FuzzerMain.cpp:19:30
+    #8 0x7f4dfb0d70b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #9 0x407dad in _start (/home/r3x/Downloads/magma_test/libpng_oss_fuzz_binary+0x407dad)
+
+UndefinedBehaviorSanitizer can not provide additional info.
