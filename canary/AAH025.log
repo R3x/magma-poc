@@ -1,0 +1,19 @@
+Reading 100949 bytes from libxml2d2/honggfuzz_libxml2_libxml2_xml_read_memory_fuzzer_AAH025.oVF
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==651831==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x03ec0009f237 (pc 0x7ffff6509177 bp 0x7ffffffc2060 sp 0x7ffffffc2028 T651831)
+==651831==The signal is caused by a READ memory access.
+    #0 0x7ffff6509176 in kill (/lib/x86_64-linux-gnu/libc.so.6+0x3f176)
+    #1 0x6b3bf2 in magma_log /magma/magma/src/canary.c:92:5
+    #2 0x4d82aa in xmlValidateOneNamespace /magma/targets/libxml2/repo/valid.c:4741:9
+    #3 0x5e391e in xmlSAX2StartElementNs /magma/targets/libxml2/repo/SAX2.c:2306:21
+    #4 0x4788dc in xmlParseStartTag2 /magma/targets/libxml2/repo/parser.c:9706:6
+    #5 0x45f62d in xmlParseElementStart /magma/targets/libxml2/repo/parser.c:10095:16
+    #6 0x45f27e in xmlParseElement /magma/targets/libxml2/repo/parser.c:10032:9
+    #7 0x463312 in xmlParseDocument /magma/targets/libxml2/repo/parser.c:10884:2
+    #8 0x4721b7 in xmlDoRead /magma/targets/libxml2/repo/parser.c:15233:5
+    #9 0x472466 in xmlReadMemory /magma/targets/libxml2/repo/parser.c:15319:13
+    #10 0x427545 in LLVMFuzzerTestOneInput /magma/targets/libxml2/src/libxml2_xml_read_memory_fuzzer.cc:35:20
+    #11 0x6b4765 in ExecuteFilesOnyByOne /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c:192:7
+    #12 0x6b45c7 in main /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c
+    #13 0x7ffff64ebc86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+    #14 0x405ac9 in _start (/magma_out/afl/libxml2_xml_read_memory_fuzzer+0x405ac9)

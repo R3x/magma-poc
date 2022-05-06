@@ -1,0 +1,16 @@
+Reading 4646 bytes from libpngd1/afl_libpng_libpng_read_fuzzer_AAH007.sn8
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==879317==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x03ec000d6ad5 (pc 0x7ffff672f177 bp 0x7fffffff31b0 sp 0x7fffffff3178 T879317)
+==879317==The signal is caused by a READ memory access.
+    #0 0x7ffff672f176 in kill (/lib/x86_64-linux-gnu/libc.so.6+0x3f176)
+    #1 0x46f152 in magma_log /magma/magma/src/canary.c:92:5
+    #2 0x42add2 in MAGMA_png_free_data /magma/targets/libpng/repo/png.c:620:4
+    #3 0x42a46e in MAGMA_png_destroy_info_struct /magma/targets/libpng/repo/png.c:408:7
+    #4 0x43f57a in MAGMA_png_destroy_read_struct /magma/targets/libpng/repo/pngread.c:1029:4
+    #5 0x42714d in LLVMFuzzerTestOneInput /magma/targets/libpng/repo/contrib/oss-fuzz/libpng_read_fuzzer.cc:154:5
+    #6 0x46fcc5 in ExecuteFilesOnyByOne /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c:192:7
+    #7 0x46fb27 in main /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c
+    #8 0x7ffff6711c86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+    #9 0x404ed9 in _start (/magma_out/afl/libpng_read_fuzzer+0x404ed9)
+UndefinedBehaviorSanitizer can not provide additional info.
+==879317==ABORTING
