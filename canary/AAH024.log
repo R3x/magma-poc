@@ -1,0 +1,22 @@
+Reading 17206 bytes from libxml2d2/honggfuzz_libxml2_libxml2_xml_read_memory_fuzzer_AAH024.28R
+UndefinedBehaviorSanitizer:DEADLYSIGNAL
+==599647==ERROR: UndefinedBehaviorSanitizer: SEGV on unknown address 0x03ec0009265f (pc 0x7ffff6509177 bp 0x7ffffffbf0d0 sp 0x7ffffffbf098 T599647)
+==599647==The signal is caused by a READ memory access.
+    #0 0x7ffff6509176 in kill (/lib/x86_64-linux-gnu/libc.so.6+0x3f176)
+    #1 0x6b3bf2 in magma_log /magma/magma/src/canary.c:92:5
+    #2 0x4c98a8 in xmlSnprintfElementContent /magma/targets/libxml2/repo/valid.c:1342:9
+    #3 0x4dcb97 in xmlValidateElementContent /magma/targets/libxml2/repo/valid.c:5558:6
+    #4 0x4db79e in xmlValidateOneElement /magma/targets/libxml2/repo/valid.c:6264:12
+    #5 0x5e5280 in xmlSAX2EndElementNs /magma/targets/libxml2/repo/SAX2.c:2455:24
+    #6 0x47b6f8 in xmlParseEndTag2 /magma/targets/libxml2/repo/parser.c:9788:2
+    #7 0x45ff09 in xmlParseElementEnd /magma/targets/libxml2/repo/parser.c:10199:2
+    #8 0x45ecad in xmlParseContentInternal /magma/targets/libxml2/repo/parser.c:9958:10
+    #9 0x45f2ad in xmlParseElement /magma/targets/libxml2/repo/parser.c:10035:5
+    #10 0x463312 in xmlParseDocument /magma/targets/libxml2/repo/parser.c:10884:2
+    #11 0x4721b7 in xmlDoRead /magma/targets/libxml2/repo/parser.c:15233:5
+    #12 0x472466 in xmlReadMemory /magma/targets/libxml2/repo/parser.c:15319:13
+    #13 0x427545 in LLVMFuzzerTestOneInput /magma/targets/libxml2/src/libxml2_xml_read_memory_fuzzer.cc:35:20
+    #14 0x6b4765 in ExecuteFilesOnyByOne /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c:192:7
+    #15 0x6b45c7 in main /magma/fuzzers/aflplusplus/repo/utils/aflpp_driver/aflpp_driver.c
+    #16 0x7ffff64ebc86 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x21c86)
+    #17 0x405ac9 in _start (/magma_out/afl/libxml2_xml_read_memory_fuzzer+0x405ac9)
